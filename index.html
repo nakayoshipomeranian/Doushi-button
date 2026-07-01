@@ -57,7 +57,7 @@ button{
 
 <p>
 れめさめが好きな方へ。<br>
-これは作品に対する評価ではなく「れめさめ大好き！」と思った時に押すためのボタンです。
+ただ「れめさめ大好き！」と思った時に押すためのボタンです。
 </p>
 
 <button id="btn">れめさめ大好き！</button>
@@ -114,8 +114,20 @@ document.getElementById("btn").addEventListener("click", async () => {
     count: increment(1)
   });
 
-  document.getElementById("msg").innerText =
-    " ありがとう！私も同じ気持ちです。";
+  document.getElementById("btn").addEventListener("click", async () => {
+
+  await updateDoc(ref, {
+    count: increment(1)
+  });
+
+  const messages = [
+    "❤️ ありがとう！同じ気持ちです！",
+    "🩷 れめさめって、良いですよね……。",
+    "💙 一緒にずっと大好きでいましょう！"
+  ];
+
+  const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+  document.getElementById("msg").innerText = randomMessage;
 
   load();
 });
